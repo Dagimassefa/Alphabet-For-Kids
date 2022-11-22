@@ -1,0 +1,18 @@
+// Typographic Settings
+// from https://raw.github.com/tyssen/Less-Baseline-Grid-Generator/master/assets/css/fonts.less
+
+@defaultfontsize: 16;
+@defaultlineheight: @defaultfontsize*1.5;
+
+.font(@fontsize:16,@lineheight:24,@multiplier:1,@lineheightreducer:1) {
+	font-size: (@fontsize/@defaultfontsize)*1em;
+	line-height: @lineheight/@fontsize/@lineheightreducer;
+	margin: ((@multiplier * @defaultlineheight) / @fontsize) * 1em 0 0;
+}
+
+.boxes(@paddingtop:1,@paddingbottom:1,@bordertop:0,@borderbottom:0) {
+	@border-top-width: @bordertop*1px;
+	@border-bottom-width: @borderbottom*1px;
+	padding-top: e(%("%sem%s", (((@paddingtop*@defaultlineheight)-@bordertop)/@defaultfontsize), `@{bordertop}>=1?'; border-top-width: @{border-top-width}':''` ));
+	padding-bottom: e(%("%sem%s", (((@paddingbottom*@defaultlineheight)-@borderbottom)/@defaultfontsize)*1, `@{borderbottom}>=1?'; border-bottom-width: @{border-bottom-width}':''` ));
+}

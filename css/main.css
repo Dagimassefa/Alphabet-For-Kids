@@ -1,0 +1,545 @@
+/*
+   Comprehensive Base Stylesheet - http://fvsch.com/code/base-stylesheet/
+   Makes browser default styles more consistent, creating a canvas that you
+   should modify for your project. Fully commented. Last update: 2011-10-02.
+*/
+/* CONTAINERS */
+body {
+  margin: 0;
+  padding: 0;
+  /* Browsers have default 8px margins _or_ padding! */
+  font-size: 100%;
+  /* See: http://www.informationarchitects.jp/en/100e2r/ */
+  line-height: 1.5;
+  /* Default value, `normal`, depends on the font */
+}
+/* HTML5 blocks - needed in older browsers */
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+/* PARAGRAPHS */
+h1,
+h2,
+h3,
+h4 {
+  margin: 1em 0 .5em;
+  /* Titles should be close to the text they describe */
+  line-height: 1.25;
+  /* Bigger text is often nicer with smaller line height */
+  font-weight: bold;
+  /* Browser default. Use `normal` for less bulky titles */
+}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.2em;
+}
+h4 {
+  font-size: 1em;
+}
+ul,
+ol {
+  margin: 1em 0;
+  /* Default for all browsers except IE */
+  padding-left: 40px;
+  /* IE has a 40px margin-left instead */
+}
+p {
+  margin: 1em 0;
+}
+blockquote {
+  margin: 1em 40px;
+  /* Same for all browsers - Customize or remove */
+}
+figure {
+  margin: 1em 0;
+  /* Default in HTML5 spec: `1em 40px` */
+}
+/* LINKS */
+/* Default browser styles (from Firefox, similar in most browsers) */
+a {
+  text-decoration: underline;
+}
+a:link {
+  color: #0000EE;
+}
+a:visited {
+  color: #551A8B;
+}
+a:active {
+  color: #EE0000;
+}
+/* Add your own styles for hover _and_ focus styles */
+a:hover,
+a:focus {
+  /* ... */
+}
+/* Remove dotted outline clicked links - Keeps outline on focus */
+a:active,
+a:hover {
+  outline: none;
+}
+/* No border around images in links */
+a img {
+  border: none;
+}
+/* MISC TEXT-LEVEL ELEMENTS */
+/* Make quotations and references more visible */
+q,
+cite {
+  font-style: italic;
+}
+/* Remove automatic quotation marks for inline quotations
+   (`q {quotes:none}` not implemented in WebKit) */
+q:before,
+q:after {
+  content: "";
+}
+/* Stopping superscript and subscript from adding to the line's leading */
+sup,
+sub {
+  line-height: 0;
+}
+/* FORMS */
+fieldset {
+  margin: 0;
+  /* Common default is `0 2px` */
+  padding: 0;
+  /* Common default (roughly): `.35em .625em .75em` */
+  border: none;
+}
+input,
+button,
+select {
+  vertical-align: middle;
+  /* Helps keep form elements roughly aligned */
+}
+/* TABLES */
+table {
+  border-collapse: collapse;
+  /* Merges cell borders together */
+  /* Browser default: border-collapse: separate; border-spacing: 2px; */
+}
+td,
+th {
+  padding: 1px;
+  /* Same as browser default - set to "0" to remove padding */
+  vertical-align: top;
+  /* Default is "middle" */
+  text-align: left;
+  /* Default for TH elements is "center" */
+}
+td:first-child,
+th:first-child {
+  empty-cells: hide;
+  /* Hide empty cells when they're the first in the row */
+}
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+@font-face {
+  font-family: 'QuicksandDash';
+  src: url('../fonts/Quicksand_Dash-webfont.eot');
+  src: url('../fonts/Quicksand_Dash-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Quicksand_Dash-webfont.woff') format('woff'), url('../fonts/Quicksand_Dash-webfont.ttf') format('truetype'), url('../fonts/Quicksand_Dash-webfont.svg#QuicksandDash') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+body {
+  height: 100%;
+  font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #222;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.button {
+  color: #fff !important;
+  font-size: 2.5em;
+  text-decoration: none;
+  border: 5px solid #fff;
+  padding: 0 1em;
+  border-radius: 50px;
+}
+.button:hover {
+  color: #2c3e50 !important;
+  border: 5px solid #2c3e50;
+}
+.page-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+}
+.page-container .page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+}
+.page-container .page.page-current {
+  visibility: visible;
+}
+.page-current,
+.no-js .page {
+  visibility: visible;
+  z-index: 1;
+}
+.no-js body {
+  overflow: auto;
+}
+.page-ontop {
+  z-index: 999;
+}
+.page {
+  position: relative;
+}
+.page-1 {
+  background: #297fca;
+}
+.page-1 .centerpage {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -200px;
+  padding: 0 1em;
+}
+.page-1 .centerpage h1 {
+  font-family: 'QuicksandDash', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 8em;
+  margin: 0;
+  padding: 0;
+}
+.page-1 .centerpage p {
+  margin-top: .2em;
+  font-weight: 100;
+  font-size: 2em;
+}
+.page-1 .centerpage .button {
+  display: inline-block;
+  width: 200px;
+  margin: 0 1em;
+}
+.page-1 .rightMenu {
+  position: absolute;
+  z-index: 5;
+  right: -280px;
+  width: 280px;
+  background: #3498db;
+  border-left: 2px solid #5faee3;
+  height: 100%;
+  transition: all 0.3s ease;
+  overflow: auto;
+}
+.page-1 .rightMenu p {
+  font-size: 1.2em;
+}
+.page-1 .rightMenu p a {
+  color: #34495e;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.page-1 .rightMenu p a:hover {
+  background: #34495e;
+  color: #fff;
+}
+.page-1 .rightMenu.active {
+  right: 0;
+}
+.page-1 .rightMenu .wrap {
+  padding: 0 1.5em;
+  overflow: auto;
+}
+.page-2 {
+  background: #bdc3c7;
+}
+.page-2 .list,
+.page-2 .toolbar {
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+  overflow: auto;
+  top: 0;
+}
+.page-2 .list ul,
+.page-2 .toolbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center !important;
+}
+.page-2 .list ul li,
+.page-2 .toolbar ul li {
+  position: relative;
+}
+.page-2 .list ul li a,
+.page-2 .toolbar ul li a {
+  display: block;
+  padding: .3em;
+  font-size: 3em;
+  text-decoration: none;
+  position: relative;
+  color: #fff;
+}
+.page-2 .list ul li a.active:after,
+.page-2 .toolbar ul li a.active:after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  z-index: 1;
+  top: 40%;
+}
+.page-2 .list {
+  border-left: 3px solid #a1aab0;
+  right: 0;
+}
+.page-2 .list a {
+  border-top: 2px solid #4aa3df;
+  border-bottom: 2px solid #258cd1;
+  background: #3498db;
+}
+.page-2 .list a.active {
+  background: #258cd1;
+  border-top: 2px solid #4aa3df;
+  border-bottom: 2px solid #217dbb;
+}
+.page-2 .list a.active:after {
+  border-right: 12px solid transparent;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #a1aab0;
+  left: 0;
+}
+.page-2 .toolbar {
+  border-right: 3px solid #a1aab0;
+  left: 0;
+  overflow: hidden;
+}
+.page-2 .toolbar a {
+  display: block;
+  width: 105px;
+  height: 112px;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #ecf0f1;
+  margin-right: 1em;
+  color: #222 !important;
+}
+.page-2 .toolbar a.active:after {
+  border-left: 12px solid transparent;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid #a1aab0;
+  right: 0;
+}
+.page-2 .toolbar a.eraser {
+  position: relative;
+}
+.page-2 .toolbar a.eraser span {
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 20px;
+  background: #222;
+  left: 12px;
+  top: 40%;
+  border-radius: 10px;
+}
+.page-2 .toolbar a.eraser span:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 80px;
+  background: #222;
+  border-radius: 10px;
+  top: -30px;
+  left: 30px;
+}
+.page-2 .menu {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 2em;
+  z-index: 4;
+}
+.page-2 .menu a {
+  margin: 0 1em;
+}
+.page-2 .menu #speakbutton {
+  position: relative;
+  background: #fff;
+  width: 30px;
+}
+.page-2 .menu #speakbutton span {
+  width: 12px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  background: #bdc3c7;
+  border-radius: 0.8em;
+  font-size: 8px;
+  top: 5px;
+  left: 34px;
+}
+.page-2 .menu #speakbutton span:after {
+  display: block;
+  position: absolute;
+  left: -0.9em;
+  top: 0.4em;
+  content: "";
+  width: 2.3em;
+  height: 2.3em;
+  border: solid 0.5em #bdc3c7;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 50%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.page-2 .menu #speakbutton span:before {
+  display: block;
+  position: absolute;
+  top: 2.5em;
+  left: -0.5em;
+  content: "";
+  width: 0;
+  height: 0;
+  border: solid 1.3em #bdc3c7;
+  border-bottom: solid 1em #bdc3c7;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.page-moveToTopFade {
+  animation: moveToTopFade .7s ease both;
+}
+.page-moveToBottomFade {
+  animation: moveToBottomFade .7s ease both;
+}
+.page-moveFromTopFade {
+  animation: moveFromTopFade .7s ease both;
+}
+.page-moveFromBottomFade {
+  animation: moveFromBottomFade .7s ease both;
+}
+@keyframes moveToTopFade {
+  to {
+    opacity: 0.3;
+    transform: translateY(-100%);
+  }
+}
+@keyframes moveToBottomFade {
+  to {
+    opacity: 0.3;
+    transform: translateY(100%);
+  }
+}
+@keyframes moveFromTopFade {
+  from {
+    opacity: 0.3;
+    transform: translateY(-100%);
+  }
+}
+@keyframes moveFromBottomFade {
+  from {
+    opacity: 0.3;
+    transform: translateY(100%);
+  }
+}
+#mainCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 2;
+  opacity: .7;
+}
+.hint {
+  font-size: 20em;
+  font-weight: normal;
+  font-family: 'QuicksandDash', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #ededed;
+  text-align: center;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  padding: 0;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -200px;
+}
+.hint-audio {
+  display: none;
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .button {
+    font-size: 1.2em !important;
+  }
+  .centerpage {
+    width: 300px !important;
+    height: 300px !important;
+    margin-left: -150px !important;
+    margin-top: -150px !important;
+  }
+  .centerpage h1 {
+    font-size: 5em !important;
+  }
+  .centerpage p {
+    font-size: 1.3em !important;
+  }
+  .centerpage .button {
+    width: 75px !important;
+    padding: 0 .2em;
+  }
+  .toolbar {
+    overflow: auto !important;
+    left: -108px !important;
+  }
+  .toolbar.active {
+    left: 0 !important;
+  }
+  .list {
+    right: -117px !important;
+  }
+  .list.active {
+    left: 0 !important;
+  }
+}
